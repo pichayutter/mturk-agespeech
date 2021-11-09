@@ -1,0 +1,321 @@
+<?php
+
+ ?>
+
+ <html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What is the age of speaker?</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        h1 {
+            padding-bottom: 20px;
+        }
+        body {
+            padding: 20px;
+        }
+
+        iframe {
+            margin: 20px;
+        }
+        button {
+            margin-left: 20px;
+            margin-top: -10px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .content {
+            display: flex;
+        }
+        .content-menu > div {
+            text-align: right;
+            padding: 5px;
+            padding-right: 20px;
+            padding-left: 30px;
+            cursor: pointer;
+        }
+        .content-menu {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 50px;
+
+        }
+        .content-menu-wrapper {
+            border-right: 1px solid gray;
+            padding-top: 50px;
+        }
+        .content-body {
+            padding-left: 30px;
+            padding-top: 30px;
+        }
+        .content-menu > div.active {
+            font-weight: bold;
+            background-color: lightgray;
+        }
+        .content-menu > div.active:hover {
+            background-color: #dbdbdb;
+        }
+        .content-menu > div:hover {
+            font-weight: bold;
+        }
+        li {
+            padding-bottom : 10px;
+        }
+        .example-question {
+            padding-left: 30px;
+        }
+    </style>
+
+ </head>
+
+ <body>
+     <div class="content">
+         <div class="content-menu-wrapper">
+             <div class="content-menu">
+                 <div class="active" data-tab="instructions">Instructions</div>
+                 <div data-tab="examples">Examples</div>
+                 <div data-tab="tasks">Tasks</div>
+             </div>
+         </div>
+         <div class="content-body">
+             <div id="instructions">
+                 <h1>Instructions : What is the age of the speaker?</h1>
+                 <p><b>Please read all the instructions and examples below before moving forward to do the task.</b><br/>You can come back to the instruction page anytime while doing the tasks.</p>
+                 <p>
+                     <b>Task:</b> In each of <u>10-second (segment)</u> Youtube video you will be watching <u>one person</u> speaking, your task is to guess (your best thought) the age of speaker.<br/>
+                     You can always click <i>Rewatch</i> button below the video in order to replay.
+                 </p>
+                 <p>
+                 <iframe id="yt-main" width="560" height="315" src="https://www.youtube.com/embed/-2xccMBlXDg?controls=0&amp;start=30&amp;end=40&amp;loop=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                 </p>
+                 <p>
+                     <button id="reload-main" type="button" class="btn btn-primary">Rewatch</button>
+                 </p>
+                 <p>
+                     After you have watched the video, you will answer the question : <b>"What is the speaker age?"</b>
+                     <br/>You can answer the age of your guess in <i>number</i> such as "15" (without the quotation).
+                     <br/><br/>
+                     Please guess the age only if there is <u>exactly one voice and one speaker appear</u>.<br/>
+                     Otherwise, please select the option: "There exists multiple speakers and/or some speaker in the background".
+                     <ul>
+                         <li>In case of <i>Multiple speakers and/or Different speaker</i>: if you hear multiple voices or see multiple people<br/>
+                             or you think that the voice you hear <u>is not from</u> the person you see in the video (someone in the background--not shown--speaking),<br/>
+                             please select the second option.
+                     </ul>
+                 </p>
+                 <p>
+                     <b>Please go to the next section in the <i>Examples</i> tab to see some example videos and answers.</b>
+                 </p>
+             </div>
+             <div id="examples" style="display:none;">
+                 <p>
+                 <h5>Example 1</h5>
+                 <iframe id="yt-e1" width="560" height="315" src="https://www.youtube.com/embed/-2xccMBlXDg?controls=0&amp;start=30&amp;end=40&amp;loop=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                 </p>
+                 <p>
+                     <button data-ytdiv="yt-e1" type="button" class="reload btn btn-primary">Rewatch</button>
+                 </p>
+                 <div class="example-question">
+                     <p>
+                         <b>What is the speaker age?</b>
+                     </p>
+                     <p>
+                         <input checked="checked" type="radio" name="answer-e1" value="1"> Age <input type="text" name="age-e1" value="5" disabled/><br>
+                         <input disabled type="radio" name="answer-e1" value="0"> There exists multiple speakers and/or some speaker in the background.<br>
+                     </p>
+                     <p>Reason: you can only see one person in the video and only his voice. So, we pick the first option and guess his age.</p>
+                 </div>
+                 <hr/>
+                 <h5>Example 2</h5>
+                 <iframe id="yt-e2" width="560" height="315" src="https://www.youtube.com/embed/-ALDAj9ZcdY?controls=0&amp;start=30&amp;end=40&amp;loop=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                 </p>
+                 <p>
+                     <button data-ytdiv="yt-e2" type="button" class="reload btn btn-primary">Rewatch</button>
+                 </p>
+                 <div class="example-question">
+                     <p>
+                         <b>What is the speaker age?</b>
+                     </p>
+                     <p>
+                         <input checked="checked" type="radio" name="answer-e2" value="1"> Age <input type="text" name="age-e2" value="7" disabled/><br>
+                         <input disabled type="radio" name="answer-e2" value="0"> There exists multiple speakers and/or some speaker in the background.<br>
+                     </p>
+                     <p>Reason: you can only see one person in the video and only her voice. So, we pick the first option and guess her age.</p>
+                 </div>
+                 <hr/>
+                 <h5>Example 3</h5>
+                 <iframe id="yt-e3" width="560" height="315" src="https://www.youtube.com/embed/-V9MUbqitw8?controls=0&amp;start=0&amp;end=10&amp;loop=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                 </p>
+                 <p>
+                     <button data-ytdiv="yt-e3" type="button" class="reload btn btn-primary">Rewatch</button>
+                 </p>
+                 <div class="example-question">
+                     <p>
+                         <b>What is the speaker age?</b>
+                     </p>
+                     <p>
+                         <input disabled type="radio" name="answer-e3" value="1"> Age <input type="text" name="age-e3" disabled/><br>
+                         <input checked="checked" type="radio" name="answer-e3" value="0"> There exists multiple speakers and/or some speaker in the background.<br>
+                     </p>
+                     <p>Reason: you can see that there are three kids in the video. So, we select the latter option.</p>
+                 </div>
+                 <hr/>
+                 <h5>Example 4</h5>
+                 <iframe id="yt-e4" width="560" height="315" src="https://www.youtube.com/embed/-T_pw9nj4uM?controls=0&amp;start=25&amp;end=35&amp;loop=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                 </p>
+                 <p>
+                     <button data-ytdiv="yt-e4" type="button" class="reload btn btn-primary">Rewatch</button>
+                 </p>
+                 <div class="example-question">
+                     <p>
+                         <b>What is the speaker age?</b>
+                     </p>
+                     <p>
+                         <input disabled type="radio" name="answer-e5" value="1"> Age <input type="text" name="age-e4" disabled/><br>
+                         <input checked="checked" type="radio" name="answer-e4" value="0"> There exists multiple speakers and/or some speaker in the background.<br>
+                     </p>
+                     <p>Reason: Even though there is the kid's voice (she) in some part of the video.<br/>There exists the voice of the background person (e.g. her dad in this case). So, we select the latter option.</p>
+                 </div>
+                 <p>
+                     <b>Please go to the next section in the <i>Tasks</i> tab to complete the task.</b>
+                 </p>
+             </div>
+             <div id="tasks" style="display:none; min-height: 200px;">
+                 <p>
+                     <button id="start" type="button" class="btn btn-primary">Begin task</button>
+                 </p>
+                 <div id="task-content">
+
+                 </div>
+                 <!--
+                 <h5>Video 1 out of 10</h5>
+                 <iframe id="yt-a1" width="560" height="315" src="https://www.youtube.com/embed/-2xccMBlXDg?controls=0&amp;start=30&amp;end=40&amp;loop=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                 </p>
+                 <p>
+                     <button data-ytdiv="yt-a1" type="button" class="reload btn btn-primary">Rewatch</button>
+                 </p>
+                 <div class="example-question">
+                     <p>
+                         <b>What is the speaker age?</b>
+                     </p>
+                     <p>
+                         <input type="radio" name="answer-a1" value="1"> Age <input type="text" name="age-a1"/><br>
+                         <input type="radio" name="answer-a1" value="0"> There exists multiple speakers and/or some speaker in the background.<br>
+                     </p>
+                     <p>Reason: you can only see one person in the video and only his voice. So, we pick the first option and guess his age.</p>
+                 </div>
+                 -->
+             </div>
+         </div>
+     </div>
+     <script type="text/javascript">
+
+        let tasks = null;
+        function readTextFile(file, callback) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.overrideMimeType("application/json");
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function() {
+             if (rawFile.readyState === 4 && rawFile.status == "200") {
+                 callback(rawFile.responseText);
+             }
+            }
+            rawFile.send(null);
+        }
+
+        readTextFile("booktubetasks.json", function(text){
+            var data = JSON.parse(text);
+            //console.log(data);
+            tasks = data;
+        });
+
+         let taskBegin = false;
+         let taskCount = 0;
+
+
+         let doneTasksInOrder = [];
+         let selected = {};
+         let answers = [];
+         let currentCount = 0;
+
+         document.getElementById("reload-main").onclick = function() {
+             document.getElementById('yt-main').src = document.getElementById('yt-main').src;
+         };
+
+         $(".reload").on("click", function () {
+             var ytId = $(this).data("ytdiv");
+             //console.log($('#' + ytId).attr('src'));
+             $('#' + ytId).attr("src", $('#' + ytId).attr('src'));
+         });
+
+         $(".content-menu > div").on("click", function () {
+             $(".content-menu > div").removeClass("active");
+             $(this).addClass("active");
+
+             $(".content-body > div").hide();
+             //console.log($(this).data("tab"));
+             var id = $(this).data("tab");
+             $("#" + id).show();
+         });
+
+         $('#start').on("click", function() {
+             console.log(taskBegin);
+             if (!taskBegin) {
+                 taskBegin = true;
+                 $(this).hide();
+             }
+             findTaskAndAppend();
+         });
+
+         function findTaskAndAppend() {
+             var id;
+             do {
+                 id = getRandom();
+             } while (selected[id] != undefined);
+
+             selected[id] = true;
+             currentCount += 1;
+             load(id);
+         }
+
+         function load (id) {
+             var content = "";
+             console.log(parseInt(tasks[id]["start_sec"].toFixed()) , (parseInt(tasks[id]["end_sec"].toFixed()) + 5));
+             content += "<h5>Video " + currentCount + " out of 10</h5>" +
+                         "<iframe id='yt-a" + currentCount + "' width='560' height='315' src='https://www.youtube.com/embed/" + tasks[id]["id"] + "?controls=0&amp;start=" + parseInt(tasks[id]["start_sec"].toFixed()) + "&amp;end=" + (parseInt(tasks[id]["end_sec"].toFixed()) + 5) + "&amp;loop=1&amp;autoplay=0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>" +
+                         "</p>" +
+                         "<p>" +
+                        "     <button data-ytdiv='yt-a" + currentCount + "' type='button' class='reload btn btn-primary'>Rewatch</button>" +
+                         "</p>" +
+                         "<div class='example-question'>" +
+                        "     <p>" +
+                        "         <b>What is the speaker age?</b>" +
+                        "     </p>" +
+                        "     <p>" +
+                        "         <input type='radio' name='answer-a" + currentCount + "' value='1'> Age <input type='text' name='age-a" + currentCount + "'/><br>" +
+                        "         <input type='radio' name='answer-a" + currentCount + "' value='0'> There exists multiple speakers and/or some speaker in the background.<br>" +
+                        "     </p>" +
+                        " </div>" +
+                        " <button type='button' class='reselect btn btn-primary'>Next</button>";
+              $('#task-content').html(content);
+
+              $(".reload").on("click", function () {
+                  var ytId = $(this).data("ytdiv");
+                  //console.log($('#' + ytId).attr('src'));
+                  $('#' + ytId).attr("src", $('#' + ytId).attr('src'));
+              });
+
+              $('.reselect').on("click", function () {
+                  findTaskAndAppend();
+              });
+         }
+
+         function getRandom() {
+              return Math.floor((Math.random() * tasks.length));
+        }
+     </script>
+ </body>
+ </html>
